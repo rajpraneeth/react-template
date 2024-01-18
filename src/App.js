@@ -1,4 +1,3 @@
-import "./App.css";
 // App.js
 import React from "react";
 import {
