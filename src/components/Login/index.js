@@ -15,9 +15,15 @@ const Login = () => {
     // Simulating a simple login logic
     if (username === "demo" && password === "password") {
       login(); // Update the user authentication state
-      navigate('/') // Redirect to the home page
+      navigate("/"); // Redirect to the home page
     } else {
       setError("Invalid username or password");
+    }
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleLogin();
     }
   };
 
@@ -25,11 +31,11 @@ const Login = () => {
     <div className="login-container">
       <div className="login-box">
         <div className="login-wrap">
-          <h2>Login</h2>
           {user.authenticated ? (
-            <p>You are already logged in as {user.role}.</p>
+            <p>You are already logged in as {user.role}. Login with admin role</p>
           ) : (
             <>
+              <h2>Login</h2>
               <div className="input-group">
                 <label htmlFor="username">Username:</label>
                 <input
@@ -37,6 +43,7 @@ const Login = () => {
                   id="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  onKeyPress={handleKeyPress}
                 />
               </div>
               <div className="input-group">
@@ -46,6 +53,7 @@ const Login = () => {
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  onKeyPress={handleKeyPress}
                 />
               </div>
               <div className="button-group">
