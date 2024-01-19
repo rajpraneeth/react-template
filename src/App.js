@@ -1,14 +1,15 @@
 // App.js
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import NotFound from "./components/NotFound";
 import { useAuth } from "./AuthContext";
+import { routes } from "./routes";
 
 // Your components
 import Login from "./components/Login";
-import { routes } from "./routes";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import NotFound from "./components/NotFound";
+import Sidebar from "./components/Sidebar";
 
 const App = () => {
   const { user } = useAuth();
@@ -16,7 +17,8 @@ const App = () => {
     <>
       <BrowserRouter>
         {user.authenticated && <Header />}
-        <div style={{ height: "90%" }}>
+        <div style={{ height: "90%", display:'flex', gap:'20px' }}>
+          {user.authenticated && <Sidebar />}
           <Routes>
             {routes.map((route) => (
               <Route
