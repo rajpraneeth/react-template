@@ -5,11 +5,11 @@ import { useAuth } from "./AuthContext";
 import { routes } from "./routes";
 
 // Your components
-import Login from "./components/Login";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import NotFound from "./components/NotFound";
-import Sidebar from "./components/Sidebar";
+import Header from "components/Header";
+import Footer from "components/Footer";
+import NotFound from "components/NotFound";
+import Sidebar from "components/Sidebar";
+import Login from "pages/Login";
 
 const App = () => {
   const { user } = useAuth();

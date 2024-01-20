@@ -1,7 +1,7 @@
-import Home from "../components/Home";
-import About from "../components/About";
-import Contact from "../components/Contact";
-import AdminPage from "../components/AdminPage";
+import Home from "pages/Home";
+import About from "pages/About";
+import Contact from "pages/Contact";
+import AdminPage from "pages/AdminPage";
 
 // Define your routes with roles
 export const routes = [
