@@ -10,6 +10,9 @@ import Footer from "components/Footer";
 import NotFound from "components/NotFound";
 import Sidebar from "components/Sidebar";
 import Login from "pages/Login";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+ 
 
 const App = () => {
   const { user } = useAuth();
@@ -38,6 +41,7 @@ const App = () => {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
+        <ToastContainer position="bottom-right" />
         {user.authenticated && <Footer />}
       </BrowserRouter>
     </>

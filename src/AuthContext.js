@@ -1,5 +1,8 @@
 // AuthContext.js
+import apiService from "api/apiService";
+
 import React, { createContext, useState, useContext } from "react";
+import { toast } from "react-toastify";
 
 const AuthContext = createContext();
 
@@ -10,12 +13,21 @@ export const AuthProvider = ({ children }) => {
       ? JSON.parse(storedUser)
       : { authenticated: false, role: "user" };
   });
+  const { data, refetch } = apiService.useGet("emp", "/api/v1/employees");
 
-  const login = () => {
-    // Your login logic here
-    const newUser = { authenticated: true, role: "user" };
-    setUser(newUser);
-    sessionStorage.setItem("user", JSON.stringify(newUser));
+  const login = async () => {
+    try {
+      // Your login logic here
+      refetch();
+      console.log("GET response:", data);
+      const newUser = { authenticated: true, role: "user" };
+      setUser(newUser);
+      sessionStorage.setItem("user", JSON.stringify(newUser));
+      toast.success("Login successful");
+    } catch (error) {
+      console.error("GET error:", error);
+      // Handle error, show toast, or perform other actions
+    }
   };
 
   const logout = () => {
