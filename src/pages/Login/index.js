@@ -1,8 +1,10 @@
 // components/Login.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.scss"; // Import the SCSS file
+import "styles/Login.scss"; // Import the SCSS file
 import { useAuth } from "AuthContext";
+import CustomInput from "components/CustomInput";
+import { FaUser, FaLock } from "react-icons/fa";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -32,30 +34,32 @@ const Login = () => {
       <div className="login-box">
         <div className="login-wrap">
           {user.authenticated ? (
-            <p>You are already logged in as {user.role}. Login with admin role</p>
+            <p>
+              You are already logged in as {user.role}. Login with admin role
+            </p>
           ) : (
             <>
               <h2>Login</h2>
-              <div className="input-group">
-                <label htmlFor="username">Username:</label>
-                <input
-                  type="text"
-                  id="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                />
-              </div>
-              <div className="input-group">
-                <label htmlFor="password">Password:</label>
-                <input
-                  type="password"
-                  id="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                />
-              </div>
+              <CustomInput
+                label="username :"
+                type="text"
+                id="username"
+                icon={<FaUser />}
+                className="focus:outline-none focus:ring-2 focus:ring-fuchsia-600"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                onKeyPress={handleKeyPress}
+              />
+              <CustomInput
+                label="password :"
+                type="password"
+                id="password"
+                icon={<FaLock />}
+                className="focus:outline-none focus:ring-2 focus:ring-fuchsia-600"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                onKeyPress={handleKeyPress}
+              />
               <div className="button-group">
                 <button onClick={handleLogin}>Login</button>
               </div>
