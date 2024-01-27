@@ -17,7 +17,7 @@ const App = () => {
     <>
       <BrowserRouter>
         {user.authenticated && <Header />}
-        <div style={{ height: "90%", display:'flex', gap:'20px' }}>
+        <div style={{ height: "90%", display:'flex'}}>
           {user.authenticated && <Sidebar />}
           <Routes>
             {routes.map((route) => (
